@@ -2,15 +2,16 @@
 include ('db_connection.php');
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM tasks WHERE id = $id";
+    $sql = "SELECT * FROM tasks WHERE id=$id";
     $result = $conn->query($sql);
-
     if ($result->num_rows == 1) {
         $task = $result->fetch_assoc();
-    } else {
+    }
+    else {
         echo "Tarefa não informada.";
         exit;
-}else {
+}}
+    else{
     echo "ID da tarefa não fornecido.";
     exit;
 }
@@ -24,10 +25,9 @@ if (isset($_GET['id'])) {
 </head>
 <body>
     <h1>Editar tarefas</h1>
-    <form action="update_task_name.php"></form>
-    method="POST">
+    <form action="update_task_name.php" method="POST">
         <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
-        <input type="text" name="title" value="<?php htmlspecialchars($task['title']); ?>" required>
+        <input type="text" name="title" value="<?php echo htmlspecialchars($task['title']); ?>" required>
         <button type="submit">Salvar alteração</button>
 </form>
 <br>

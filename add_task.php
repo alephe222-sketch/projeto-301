@@ -2,7 +2,7 @@
  include ('db_connection.php');
  if($_SERVER["REQUEST_METHOD"]== "POST"){
     $title = $_POST['title'];
-   $sql = "INSERT INTO task (title, status, created_at) VALUES ('$title', 'pendente', NOW())";
+   $sql = "INSERT INTO tasks (title, status, created_at) VALUES ('$title', 'pendente', NOW())";
     if ($conn -> query($sql)===TRUE){
         header("Location:index.php");
         exit;}else{
